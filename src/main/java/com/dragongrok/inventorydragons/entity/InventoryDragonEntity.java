@@ -15,15 +15,17 @@ import net.minecraft.world.World;
 
 /**
  * Inventory Dragon entity.
- * - Can be summoned / recalled with the Dragon Whistle
+ * - Summon / recall with whistle
  * - Follows owner
- * - Can be ridden and flown by the player
+ * - Rideable & flyable
+ * - Element-specific breath attacks
  */
 public class InventoryDragonEntity extends PathAwareEntity {
 
     private int level = 1;
     private String dragonType = "Fire";
     private PlayerEntity owner;
+    private int abilityCooldown = 0;
 
     public InventoryDragonEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
@@ -43,10 +45,42 @@ public class InventoryDragonEntity extends PathAwareEntity {
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new EscapeDangerGoal(this, 1.4));
-        this.goalSelector.add(2, new FollowOwnerGoal(this, 1.2, 6.0f, 2.0f));
-        this.goalSelector.add(3, new LookAtEntityGoal(this, PlayerEntity.class, 10.0f));
-        this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.8));
-        this.goalSelector.add(5, new LookAroundGoal(this));
+        this.goalSelector.add(2, new MeleeAttackGoal(this, 1.2, true));
+        this.goalSelector.add(3, new FollowOwnerGoal(this, 1.2, 6.0f, 2.0f));
+        this.goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 10.0f));
+        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8));
+        this.goalSelector.add(6, new LookAroundGoal(this));
+
+        this.targetSelector.add(1, new RevengeGoal(this));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, net.minecraft.entity.mob.HostileEntity.class, true));
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (abilityCooldown > 0) {
+            abilityCooldown--;
+        }
+
+        // While being ridden, player can activate breath by "attacking" (left click)
+        if (!this.getWorld().isClient && this.hasPassengers() && this.getFirstPassenger() instanceof PlayerEntity player) {
+            if (player.handSwinging && abilityCooldown <= 0) {
+                DragonAbilities.performAreaAttack(this);
+                abilityCooldown = 40; // 2 seconds cooldown
+            }
+        }
+    }
+
+    @Override
+    public boolean tryAttack(Entity target) {
+        if (super.tryAttack(target)) {
+            if (target instanceof LivingEntity living) {
+                DragonAbilities.performBreathAttack(this, living);
+            }
+            return true;
+        }
+        return false;
     }
 
     // ===== Level & Type =====
@@ -109,7 +143,6 @@ public class InventoryDragonEntity extends PathAwareEntity {
     @Override
     public void travel(Vec3d movementInput) {
         if (this.hasPassengers() && this.getFirstPassenger() instanceof PlayerEntity player) {
-            // Controlled by the rider
             this.setYaw(player.getYaw());
             this.prevYaw = this.getYaw();
             this.setPitch(player.getPitch() * 0.5f);
@@ -126,7 +159,6 @@ public class InventoryDragonEntity extends PathAwareEntity {
 
             this.setMovementSpeed((float) this.getAttributeValue(EntityAttributes.GENERIC_FLYING_SPEED));
 
-            // Flying up/down with jump / sneak
             double vertical = 0.0;
             if (player.jumping) {
                 vertical = 0.4;
@@ -134,8 +166,7 @@ public class InventoryDragonEntity extends PathAwareEntity {
                 vertical = -0.4;
             }
 
-            Vec3d travelVec = new Vec3d(side, vertical, forward);
-            super.travel(travelVec);
+            super.travel(new Vec3d(side, vertical, forward));
         } else {
             super.travel(movementInput);
         }
@@ -149,7 +180,7 @@ public class InventoryDragonEntity extends PathAwareEntity {
         return super.isLogicalSideForUpdatingMovement();
     }
 
-    // Simple follow owner goal
+    // Follow owner goal
     static class FollowOwnerGoal extends Goal {
         private final InventoryDragonEntity dragon;
         private final double speed;
@@ -167,8 +198,7 @@ public class InventoryDragonEntity extends PathAwareEntity {
         public boolean canStart() {
             PlayerEntity owner = dragon.getOwner();
             if (owner == null || !owner.isAlive() || dragon.hasPassengers()) return false;
-            double dist = dragon.squaredDistanceTo(owner);
-            return dist > (minDistance * minDistance);
+            return dragon.squaredDistanceTo(owner) > (minDistance * minDistance);
         }
 
         @Override
