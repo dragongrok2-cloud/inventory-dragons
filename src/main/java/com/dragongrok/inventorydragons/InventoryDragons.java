@@ -1,5 +1,6 @@
 package com.dragongrok.inventorydragons;
 
+import com.dragongrok.inventorydragons.entity.ModEntities;
 import com.dragongrok.inventorydragons.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -14,7 +15,8 @@ public class InventoryDragons implements ModInitializer {
         LOGGER.info("Rrrrr... Inventory Dragons loaded! Dragons are now living in your pockets!");
 
         ModItems.registerModItems();
+        ModEntities.registerModEntities();
 
-        // TODO: Register inventory dragon entities, eggs, abilities, sounds...
+        // TODO: Register abilities, sounds, inventory tick events, hatching logic...
     }
 }
