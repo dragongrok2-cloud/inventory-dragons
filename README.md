@@ -4,41 +4,35 @@
 
 Created by the kind dragon with a saddle (and his rider).
 
-## Idea
-Small dragons that can sit in your inventory slots. They can:
-- Protect items from despawn
-- Give buffs while in inventory
-- Be fed and leveled up
-- Hatch from special eggs
-- Be summoned to help in combat!
+## Features (working)
 
-## Current Content
+### Right-click hatching
+Hold any Dragon Egg and right-click → it hatches into a dragon!
+
+### Feeding & Leveling
+Hold a Dragon Treat in one hand and a dragon in the other → right-click to feed (+25 XP).
+Dragons store Level + XP in NBT and show it in the tooltip.
+
+### Passive Buffs (inventory tick)
+Having dragons in your inventory gives continuous buffs:
+- **Fire** → Fire Resistance
+- **Ice** → Resistance
+- **Nature** → Regeneration
+- **Wind** → Speed + Slow Falling
+- **Shadow** → Night Vision
+- **Light** → Glowing
 
 ### Dragon Types
-- Fire, Ice, Nature, Shadow, Light, **Wind** Inventory Dragons
-- Baby Inventory Dragon
+Fire • Ice • Nature • Shadow • Light • **Wind** + Baby
 
-### Eggs
-- Inventory Dragon Egg
-- Fire / Ice / Nature / **Wind** Dragon Eggs
-
-### Special Items
-- Dragon Treat (for leveling)
-- Dragon Whistle (summon/recall)
-
-### Systems
-- **HatchingSystem** — eggs hatch into dragons
-- **InventoryEvents** — feeding & passive buffs
-- **DragonLeveling** — levels 1–10 with titles
-- **ModSounds** — hatch, eat, roar, purr, wings, whistle
-- Entity placeholder ready for AI and models
+### Sounds
+Hatch, eat, roar, purr, wings, whistle (placeholders ready)
 
 ## Requirements
 - Minecraft 1.21+
-- Fabric Loader
-- Fabric API
+- Fabric Loader + Fabric API
 
 ## Documentation
-See `docs/FEATURES.md` for full details.
+See `docs/FEATURES.md`
 
-Rrrrr... Now even the Wind Dragon lives in your pockets! 🔥
+Rrrrr... Now you can really hatch, feed and power up your pocket dragons! 🔥
