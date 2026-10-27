@@ -1,6 +1,7 @@
 package com.dragongrok.inventorydragons.entity;
 
 import com.dragongrok.inventorydragons.InventoryDragons;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
@@ -13,11 +14,12 @@ public class ModEntities {
             Registries.ENTITY_TYPE,
             Identifier.of(InventoryDragons.MOD_ID, "inventory_dragon"),
             EntityType.Builder.create(InventoryDragonEntity::new, SpawnGroup.CREATURE)
-                    .dimensions(0.6f, 0.6f)
+                    .dimensions(1.2f, 1.0f) // larger so it's rideable
                     .build()
     );
 
     public static void registerModEntities() {
-        InventoryDragons.LOGGER.info("Registering Inventory Dragon entities...");
+        FabricDefaultAttributeRegistry.register(INVENTORY_DRAGON, InventoryDragonEntity.createDragonAttributes());
+        InventoryDragons.LOGGER.info("Registering Inventory Dragon entities (rideable & AI)...");
     }
 }
