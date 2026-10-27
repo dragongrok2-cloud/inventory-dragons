@@ -1,0 +1,26 @@
+{
+  "dragon_hatch": {
+    "subtitle": "subtitles.inventory-dragons.dragon_hatch",
+    "sounds": ["inventory-dragons:dragon_hatch"]
+  },
+  "dragon_eat": {
+    "subtitle": "subtitles.inventory-dragons.dragon_eat",
+    "sounds": ["inventory-dragons:dragon_eat"]
+  },
+  "dragon_roar": {
+    "subtitle": "subtitles.inventory-dragons.dragon_roar",
+    "sounds": ["inventory-dragons:dragon_roar"]
+  },
+  "dragon_purr": {
+    "subtitle": "subtitles.inventory-dragons.dragon_purr",
+    "sounds": ["inventory-dragons:dragon_purr"]
+  },
+  "dragon_wings": {
+    "subtitle": "subtitles.inventory-dragons.dragon_wings",
+    "sounds": ["inventory-dragons:dragon_wings"]
+  },
+  "dragon_whistle": {
+    "subtitle": "subtitles.inventory-dragons.dragon_whistle",
+    "sounds": ["inventory-dragons:dragon_whistle"]
+  }
+}
