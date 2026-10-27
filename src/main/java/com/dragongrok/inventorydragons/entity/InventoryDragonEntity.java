@@ -2,23 +2,21 @@ package com.dragongrok.inventorydragons.entity;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 
 /**
- * Placeholder entity for Inventory Dragons.
- * In the future this will be a small flying companion that can:
- * - Be stored in inventory as an item
- * - Be summoned with the Dragon Whistle
- * - Level up and gain abilities
- * - Protect the player
+ * Inventory Dragon entity - can be summoned with the Dragon Whistle.
+ * Stores type and level so it can be recalled back into item form.
  */
 public class InventoryDragonEntity extends PathAwareEntity {
 
     private int level = 1;
-    private String dragonType = "fire"; // fire, ice, nature, shadow, light
+    private String dragonType = "Fire";
 
     public InventoryDragonEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
+        this.setHealth(20.0f + level * 2);
     }
 
     public int getLevel() {
@@ -26,7 +24,8 @@ public class InventoryDragonEntity extends PathAwareEntity {
     }
 
     public void setLevel(int level) {
-        this.level = Math.max(1, Math.min(level, 10)); // Cap at level 10 for now
+        this.level = Math.max(1, Math.min(level, 10));
+        this.setHealth(20.0f + this.level * 2);
     }
 
     public String getDragonType() {
@@ -34,8 +33,13 @@ public class InventoryDragonEntity extends PathAwareEntity {
     }
 
     public void setDragonType(String type) {
-        this.dragonType = type;
+        this.dragonType = type != null ? type : "Fire";
     }
 
-    // TODO: Add AI goals, flying, inventory interaction, buffs, etc.
+    @Override
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return true;
+    }
+
+    // TODO: Add proper AI (follow owner, fly, attack nearby hostiles based on type)
 }
