@@ -3,6 +3,7 @@
   "item.inventory-dragons.fire_dragon_egg": "Fire Dragon Egg",
   "item.inventory-dragons.ice_dragon_egg": "Ice Dragon Egg",
   "item.inventory-dragons.nature_dragon_egg": "Nature Dragon Egg",
+  "item.inventory-dragons.wind_dragon_egg": "Wind Dragon Egg",
 
   "item.inventory-dragons.baby_inventory_dragon": "Baby Inventory Dragon",
   "item.inventory-dragons.fire_inventory_dragon": "Fire Inventory Dragon",
@@ -10,11 +11,19 @@
   "item.inventory-dragons.nature_inventory_dragon": "Nature Inventory Dragon",
   "item.inventory-dragons.shadow_inventory_dragon": "Shadow Inventory Dragon",
   "item.inventory-dragons.light_inventory_dragon": "Light Inventory Dragon",
+  "item.inventory-dragons.wind_inventory_dragon": "Wind Inventory Dragon",
 
   "item.inventory-dragons.dragon_treat": "Dragon Treat",
   "item.inventory-dragons.dragon_whistle": "Dragon Whistle",
 
   "entity.inventory-dragons.inventory_dragon": "Inventory Dragon",
+
+  "subtitles.inventory-dragons.dragon_hatch": "Dragon egg hatches",
+  "subtitles.inventory-dragons.dragon_eat": "Dragon eats",
+  "subtitles.inventory-dragons.dragon_roar": "Dragon roars",
+  "subtitles.inventory-dragons.dragon_purr": "Dragon purrs",
+  "subtitles.inventory-dragons.dragon_wings": "Dragon wings flap",
+  "subtitles.inventory-dragons.dragon_whistle": "Dragon whistle",
 
   "itemGroup.inventory-dragons.main": "Inventory Dragons"
 }
