@@ -1,0 +1,13 @@
+# Minecraft / Fabric
+.gradle/
+build/
+out/
+run/
+*.class
+*.jar
+!gradle-wrapper.jar
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+*.log
