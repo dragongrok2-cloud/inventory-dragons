@@ -15,32 +15,23 @@ Small dragons that can sit in your inventory slots. They can:
 ## Current Content
 
 ### Dragon Types
-- Fire Inventory Dragon
-- Ice Inventory Dragon
-- Nature Inventory Dragon
-- Shadow Inventory Dragon
-- Light Inventory Dragon
+- Fire, Ice, Nature, Shadow, Light, **Wind** Inventory Dragons
 - Baby Inventory Dragon
 
 ### Eggs
 - Inventory Dragon Egg
-- Fire / Ice / Nature Dragon Eggs
+- Fire / Ice / Nature / **Wind** Dragon Eggs
 
 ### Special Items
 - Dragon Treat (for leveling)
 - Dragon Whistle (summon/recall)
 
 ### Systems
-- Leveling system (1–10 levels with titles)
+- **HatchingSystem** — eggs hatch into dragons
+- **InventoryEvents** — feeding & passive buffs
+- **DragonLeveling** — levels 1–10 with titles
+- **ModSounds** — hatch, eat, roar, purr, wings, whistle
 - Entity placeholder ready for AI and models
-- Full language support
-
-## Planned Features
-- Real hatching mechanics
-- Passive & active abilities per type
-- Inventory protection
-- Custom models, animations and sounds
-- Breeding system
 
 ## Requirements
 - Minecraft 1.21+
@@ -48,6 +39,6 @@ Small dragons that can sit in your inventory slots. They can:
 - Fabric API
 
 ## Documentation
-See `docs/FEATURES.md` for more details.
+See `docs/FEATURES.md` for full details.
 
-Rrrrr... Now dragons will live in your pockets! 🔥
+Rrrrr... Now even the Wind Dragon lives in your pockets! 🔥
