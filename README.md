@@ -10,11 +10,11 @@ Created by the kind dragon with a saddle (and his rider).
 Hold any Dragon Egg and right-click → it hatches into a dragon!
 
 ### Feeding & Leveling
-Hold a Dragon Treat in one hand and a dragon in the other → right-click to feed (+25 XP).
-Dragons store Level + XP in NBT and show it in the tooltip.
+Hold a Dragon Treat + a dragon → right-click to feed (+25 XP).
+Level & XP are stored in NBT and shown in the tooltip.
 
-### Passive Buffs (inventory tick)
-Having dragons in your inventory gives continuous buffs:
+### Passive Buffs
+Dragons in inventory give continuous effects:
 - **Fire** → Fire Resistance
 - **Ice** → Resistance
 - **Nature** → Regeneration
@@ -22,17 +22,18 @@ Having dragons in your inventory gives continuous buffs:
 - **Shadow** → Night Vision
 - **Light** → Glowing
 
+### Summon & Recall (Dragon Whistle)
+- Right-click whistle to summon a dragon from inventory/hand as an entity
+- Right-click again near a summoned dragon to recall it back into item form
+
+### Death Protection
+Your Inventory Dragons survive player death and return to you!
+
 ### Dragon Types
 Fire • Ice • Nature • Shadow • Light • **Wind** + Baby
-
-### Sounds
-Hatch, eat, roar, purr, wings, whistle (placeholders ready)
 
 ## Requirements
 - Minecraft 1.21+
 - Fabric Loader + Fabric API
 
-## Documentation
-See `docs/FEATURES.md`
-
-Rrrrr... Now you can really hatch, feed and power up your pocket dragons! 🔥
+Rrrrr... Hatch, feed, summon, protect — your pocket dragons are ready! 🔥
