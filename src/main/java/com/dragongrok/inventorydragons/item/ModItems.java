@@ -21,6 +21,9 @@ public class ModItems {
     public static final Item NATURE_DRAGON_EGG = registerItem("nature_dragon_egg",
             new Item(new Item.Settings().maxCount(16)));
 
+    public static final Item WIND_DRAGON_EGG = registerItem("wind_dragon_egg",
+            new Item(new Item.Settings().maxCount(16)));
+
     // Baby / Base dragons
     public static final Item BABY_INVENTORY_DRAGON = registerItem("baby_inventory_dragon",
             new Item(new Item.Settings().maxCount(1)));
@@ -41,6 +44,9 @@ public class ModItems {
     public static final Item LIGHT_INVENTORY_DRAGON = registerItem("light_inventory_dragon",
             new Item(new Item.Settings().maxCount(1)));
 
+    public static final Item WIND_INVENTORY_DRAGON = registerItem("wind_inventory_dragon",
+            new Item(new Item.Settings().maxCount(1)));
+
     // Special items
     public static final Item DRAGON_TREAT = registerItem("dragon_treat",
             new Item(new Item.Settings().maxCount(64)));
@@ -53,6 +59,6 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        InventoryDragons.LOGGER.info("Registering Inventory Dragons items (eggs, dragons, treats)...");
+        InventoryDragons.LOGGER.info("Registering Inventory Dragons items (including Wind Dragon)...");
     }
 }
