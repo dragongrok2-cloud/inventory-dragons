@@ -3,6 +3,7 @@ package com.dragongrok.inventorydragons;
 import com.dragongrok.inventorydragons.entity.ModEntities;
 import com.dragongrok.inventorydragons.item.ModItems;
 import com.dragongrok.inventorydragons.sound.ModSounds;
+import com.dragongrok.inventorydragons.system.DeathProtectionHandler;
 import com.dragongrok.inventorydragons.system.InventoryTickHandler;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -14,13 +15,16 @@ public class InventoryDragons implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Rrrrr... Inventory Dragons fully loaded! Right-click eggs, feed treats, enjoy passive buffs!");
+        LOGGER.info("Rrrrr... Inventory Dragons fully loaded! Hatch, feed, summon, protect!");
 
         ModItems.registerModItems();
         ModEntities.registerModEntities();
         ModSounds.registerModSounds();
 
-        // Register inventory tick handler for passive buffs
+        // Passive buffs while dragons are in inventory
         InventoryTickHandler.register();
+
+        // Dragons survive player death
+        DeathProtectionHandler.register();
     }
 }
