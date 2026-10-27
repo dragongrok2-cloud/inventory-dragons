@@ -16,8 +16,8 @@ import java.util.List;
 
 /**
  * Dragon Whistle - summon or recall Inventory Dragons.
- * Right-click: if a dragon item is in offhand/mainhand, try to summon it as entity.
- * If already summoned nearby, recall it back into item form.
+ * Right-click to summon from inventory/hand or recall nearby dragon.
+ * Once summoned you can right-click the dragon to ride and fly it!
  */
 public class DragonWhistleItem extends Item {
 
@@ -33,22 +33,19 @@ public class DragonWhistleItem extends Item {
             return TypedActionResult.success(whistle);
         }
 
-        // Play whistle sound
         world.playSound(null, user.getX(), user.getY(), user.getZ(),
                 ModSounds.DRAGON_WHISTLE, SoundCategory.PLAYERS, 1.0f, 1.0f);
 
-        // Check for nearby summoned dragons to recall
+        // Recall nearby dragons first
         Box searchBox = user.getBoundingBox().expand(16.0);
         List<InventoryDragonEntity> nearby = world.getEntitiesByClass(
                 InventoryDragonEntity.class, searchBox, e -> e.isAlive());
 
         if (!nearby.isEmpty()) {
-            // Recall the closest one
             InventoryDragonEntity dragon = nearby.get(0);
             String type = dragon.getDragonType();
             int level = dragon.getLevel();
 
-            // Create item version
             ItemStack dragonItem = createDragonItem(type, level);
             if (!user.getInventory().insertStack(dragonItem)) {
                 user.dropItem(dragonItem, false);
@@ -59,27 +56,26 @@ public class DragonWhistleItem extends Item {
             return TypedActionResult.success(whistle);
         }
 
-        // Try to summon from hand or inventory
+        // Summon from hand or inventory
         ItemStack dragonStack = findDragonInHands(user);
         if (dragonStack.isEmpty()) {
             dragonStack = findFirstDragonInInventory(user);
         }
 
         if (!dragonStack.isEmpty() && dragonStack.getItem() instanceof InventoryDragonItem invDragon) {
-            // Summon entity
             InventoryDragonEntity entity = ModEntities.INVENTORY_DRAGON.create(world);
             if (entity != null) {
                 entity.setPosition(user.getX(), user.getY() + 1.0, user.getZ());
                 entity.setDragonType(invDragon.getDragonType());
                 entity.setLevel(InventoryDragonItem.getLevel(dragonStack));
+                entity.setOwner(user); // important for follow AI
 
                 world.spawnEntity(entity);
 
-                // Consume the item version
                 dragonStack.decrement(1);
 
                 user.sendMessage(net.minecraft.text.Text.literal(
-                        "You summoned your " + invDragon.getDragonType() + " Dragon!"), true);
+                        "You summoned your " + invDragon.getDragonType() + " Dragon! Right-click it to ride!"), true);
 
                 world.playSound(null, user.getX(), user.getY(), user.getZ(),
                         ModSounds.DRAGON_ROAR, SoundCategory.PLAYERS, 0.8f, 1.2f);
