@@ -2,6 +2,7 @@ package com.dragongrok.inventorydragons;
 
 import com.dragongrok.inventorydragons.entity.ModEntities;
 import com.dragongrok.inventorydragons.item.ModItems;
+import com.dragongrok.inventorydragons.sound.ModSounds;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,11 +13,12 @@ public class InventoryDragons implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Rrrrr... Inventory Dragons loaded! Dragons are now living in your pockets!");
+        LOGGER.info("Rrrrr... Inventory Dragons loaded! Dragons (including Wind) are now living in your pockets!");
 
         ModItems.registerModItems();
         ModEntities.registerModEntities();
+        ModSounds.registerModSounds();
 
-        // TODO: Register abilities, sounds, inventory tick events, hatching logic...
+        // Systems ready: HatchingSystem, InventoryEvents, DragonLeveling
     }
 }
