@@ -28,9 +28,19 @@ Dragons in inventory give continuous effects:
 
 ### Ride & Fly!
 - Right-click a summoned dragon to mount it
-- Use movement keys to fly
-- Jump = fly up, Sneak = fly down
+- WASD + Jump/Sneak to fly
 - The dragon follows you when not ridden
+
+### Combat & Element Abilities
+- Dragons attack nearby hostiles
+- Each type has a unique breath attack:
+  - **Fire** — sets on fire
+  - **Ice** — slows
+  - **Nature** — poisons
+  - **Shadow** — blindness + weakness
+  - **Light** — glowing + high damage
+  - **Wind** — strong knockback
+- While flying: left-click (attack) to perform an area breath attack
 
 ### Death Protection
 Your Inventory Dragons survive player death and return to you!
@@ -42,4 +52,4 @@ Fire • Ice • Nature • Shadow • Light • **Wind** + Baby
 - Minecraft 1.21+
 - Fabric Loader + Fabric API
 
-Rrrrr... Now you can hatch, feed, summon, protect **and fly** on your dragons! 🔥
+Rrrrr... Hatch, feed, summon, fly **and breathe elemental fury**! 🔥
