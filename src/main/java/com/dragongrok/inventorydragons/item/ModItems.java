@@ -48,7 +48,7 @@ public class ModItems {
 
     // Special items
     public static final Item DRAGON_TREAT = registerItem("dragon_treat",
-            new Item(new Item.Settings().maxCount(64)));
+            new DragonTreatItem(new Item.Settings().maxCount(64)));
 
     public static final Item DRAGON_WHISTLE = registerItem("dragon_whistle",
             new Item(new Item.Settings().maxCount(1)));
@@ -58,6 +58,6 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        InventoryDragons.LOGGER.info("Registering Inventory Dragons items with hatching & NBT support...");
+        InventoryDragons.LOGGER.info("Registering Inventory Dragons items with hatching, NBT & feeding...");
     }
 }
