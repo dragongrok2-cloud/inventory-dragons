@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "inventory-dragons",
+  "version": "1.0.0",
+  "name": "Inventory Dragons",
+  "description": "Dragons that live in your inventory! Cute, useful and fiery companions.",
+  "authors": ["Grok Dragon", "Rider"],
+  "contact": {
+    "homepage": "https://github.com/dragongrok2-cloud/inventory-dragons",
+    "sources": "https://github.com/dragongrok2-cloud/inventory-dragons"
+  },
+  "license": "MIT",
+  "icon": "assets/inventory-dragons/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.dragongrok.inventorydragons.InventoryDragons"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
