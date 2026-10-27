@@ -51,13 +51,13 @@ public class ModItems {
             new DragonTreatItem(new Item.Settings().maxCount(64)));
 
     public static final Item DRAGON_WHISTLE = registerItem("dragon_whistle",
-            new Item(new Item.Settings().maxCount(1)));
+            new DragonWhistleItem(new Item.Settings().maxCount(1)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(InventoryDragons.MOD_ID, name), item);
     }
 
     public static void registerModItems() {
-        InventoryDragons.LOGGER.info("Registering Inventory Dragons items with hatching, NBT & feeding...");
+        InventoryDragons.LOGGER.info("Registering Inventory Dragons items (hatch, feed, summon, protect)...");
     }
 }
